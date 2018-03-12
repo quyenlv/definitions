@@ -70,6 +70,14 @@ You can find this path in the installation report log::
 
     Logfile: /usr/local/texlive/2017/install-tl.log
 
+Next, we have to install the Latexmk, a ``make`` tool for building latext
+documents. It is in the TeXLive package which we installed above. Just make
+a symlink for ``latexmk`` command to the ``latexmk.pl`` script::
+
+    ln -sf /usr/local/bin/latexmk /usr/local/texlive/2017/texmf-dist/scripts/latexmk/latexmk.pl
+
+Make sure ``latexmk`` is executable, e.g., by using chmod suitably.
+
 Finally, you can generate the pdf document by this command::
 
     make pdfdoc
