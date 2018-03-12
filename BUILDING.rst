@@ -24,6 +24,62 @@ The HTML documentation is located in this folder::
     ./manual/build/html/
 
 
+Building PDF document
+---------------------
+
+In order to build pdf file, you have to install LaTex in your build
+server [1]_. But the LaTex packages in Linux is not sufficient enough.
+The best way is to use the texlive_ offical installatioin tool to
+install the full packages for texlive. It will take arround 4.5GB.
+
+First, remove existing texlive packages if they are installed::
+
+    yum erase texlive texlive*
+
+Then download the install-tl.zip_ installation package from its website.
+
+And execute the installation tools in the decompressed package::
+
+    ./install-tl
+
+It will download and install the packages/tools for texlive.
+
+After it is done, set the path in your ~/.bashrc or a global
+location accordingly::
+
+    export PATH=/usr/local/texlive/2017/bin/i386-linux/:$PATH
+
+Here, ``/usr/local/texlive/`` is the path you chose to install texlive.
+If you choose another location, you can replace it with the one you used.
+You can find this path in the installation report log::
+
+    Welcome to TeX Live!
+
+
+    See /usr/local/texlive/2017/index.html for links to documentation.
+    The TeX Live web site (http://tug.org/texlive/) contains any updates and
+    corrections. TeX Live is a joint project of the TeX user groups around the
+    world; please consider supporting it by joining the group best for you. The
+    list of groups is available on the web at http://tug.org/usergroups.html.
+
+
+    Add /usr/local/texlive/2017/texmf-dist/doc/man to MANPATH.
+    Add /usr/local/texlive/2017/texmf-dist/doc/info to INFOPATH.
+    Most importantly, add /usr/local/texlive/2017/bin/i386-linux
+    to your PATH for current and future sessions.
+
+    Logfile: /usr/local/texlive/2017/install-tl.log
+
+Finally, you can generate the pdf document by this command::
+
+    make pdfdoc
+
+The output file can be found in ``manual/build/latex``.
+
+
+.. _install-tl.zip: http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+.. _texlive: https://www.tug.org/
+
 Out-of-Tree documentation
 =========================
 
@@ -109,3 +165,8 @@ variable, such as one of these lines::
 
 Try to avoid installing Python on a directory path that has 
 embedded spaces.  Long series of tedious problems with that.
+
+
+Reference
+=========
+.. [1] https://www.systutorials.com/qa/2339/how-to-install-tex-live-on-centos-7-linux

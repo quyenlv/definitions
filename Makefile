@@ -20,8 +20,8 @@ manual ::
 impatient-guide ::
 	$(MAKE) html -C $@
 
-#pdfdoc ::
-#	$(MAKE) latexpdf -C $(SUBDIRS)
+pdfdoc ::
+	$(MAKE) latexpdf -C $(SUBDIRS)
 
 clean:
 	$(MAKE) clean -C $(SUBDIRS)
